@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# usage: users.sh SSH_PUBLIC_KEY
+# usage: user.sh SSH_PUBLIC_KEY
 #
 
 set -euo pipefail
@@ -38,7 +38,7 @@ then
   useradd \
     --shell /bin/bash \
     --create-home \
-    --groups admin \
+    --groups admin sudo \
     --home-dir /home/chiller chiller
   chmod o-x /home/chiller
 fi

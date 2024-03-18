@@ -6,8 +6,9 @@ apt-get -y update
 apt-get -y upgrade
 
 packages=(
+  sudo
   adduser binutils-dev
-  cargo rustc cmake make build-essential gdb
+  cmake make build-essential gdb
   conntrack
   cron
   dnsutils
@@ -56,9 +57,9 @@ packages=(
   rsync
   spirv-tools
   sqlite3
-  strace
-  tcpdump
   unzip
+  strace
+  tcpdump nload
 )
 
 apt-get -y install "${packages[@]}"
