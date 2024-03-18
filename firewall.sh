@@ -16,6 +16,9 @@ iptables-save > "$backup_file"
 
 printf '[*] backed up iptables to %s\n' "$backup_file"
 
+# yikes
+update-alternatives --set iptables /usr/sbin/iptables-legacy
+
 # deletes all current rules
 iptables -P INPUT ACCEPT
 iptables -P FORWARD ACCEPT
