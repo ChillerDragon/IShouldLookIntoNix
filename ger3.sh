@@ -76,3 +76,8 @@ then
 	EOF
 fi
 
+mkdir ~/git
+cd ~/git
+
+[ -d ddnet-insta ] || git clone git@github.com:ZillyInsta/ddnet-insta.git
+
