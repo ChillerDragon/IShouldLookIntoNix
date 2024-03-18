@@ -12,9 +12,11 @@ packages=(
   conntrack
   cron
   dnsutils
+  figlet
+  luarocks shellcheck
   curl wget
   tmux screen
-  git htop tree vim
+  git htop tree vim-nox
   universal-ctags
   glslang-tools
   google-mock
@@ -53,6 +55,7 @@ packages=(
   pkg-config
   python3
   python3-cachetools
+  python3-dev
   python3-dnslib
   python3-pip
   rsync
