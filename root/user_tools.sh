@@ -25,7 +25,8 @@ then
 fi
 
 script_dst="/home/$UNIX_USER/install_tools.sh"
-cp ./user/install_tools.sh "$script_dst"
+cp ./user/install_tools.sh "$script_dst" || \
+  cp ../user/install_tools.sh "$script_dst"
 chown "$UNIX_USER:$UNIX_USER" "$script_dst"
 
 su - teeworlds -c "/bin/bash $script_dst"
