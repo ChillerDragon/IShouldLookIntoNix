@@ -14,9 +14,11 @@ fi
 
 if ! grep -q '^chiller:' /etc/passwd
 then
+  addgroup admin
   useradd \
     --shell /bin/bash \
     --create-home \
+    --groups admin \
     --home-dir /home/chiller chiller
 fi
 
