@@ -13,8 +13,9 @@ packages=(
   cron
   dnsutils
   curl wget
-  git htop tree vim
   tmux screen
+  git htop tree vim
+  universal-ctags
   glslang-tools
   google-mock
   iptables
@@ -60,6 +61,8 @@ packages=(
   unzip
   strace
   tcpdump nload
+  netcat
+  bc
 )
 
 apt-get -y install "${packages[@]}"
