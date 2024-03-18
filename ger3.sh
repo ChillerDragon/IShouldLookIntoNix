@@ -64,7 +64,7 @@ then
 	# ddnet gctf
 	exec cfg/autoexec.cfg
 
-	sv_name "ChillerDragon's gCTF/iCTF GER1 [0.6/0.7 bridge]"
+	sv_name "ChillerDragon's gCTF/iCTF GER3 [0.6/0.7 bridge]"
 	sv_port 8709
 	EOF
 fi
