@@ -9,6 +9,7 @@ read -e -r -p '> ' SSH_PUBLIC_KEY
 ./firewall.sh
 ./user.sh "$SSH_PUBLIC_KEY"
 ./harden_filesystem.sh
+./harden_proc.sh
 
 if [ ! -f /root/.ssh/authorized_keys ]
 then
