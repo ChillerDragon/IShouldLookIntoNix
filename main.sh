@@ -2,4 +2,5 @@
 
 ./packages.sh
 ./firewall.sh
+./user.sh
 
