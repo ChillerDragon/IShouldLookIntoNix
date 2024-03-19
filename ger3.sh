@@ -14,12 +14,10 @@ fi
 cd tem-07
 
 [ -d cfg ] || git clone git@github.com:chillavanilla/cfg.git
-[ ! -d cfg/private ] || git clone git@github.com:chillavanilla/private.git cfg/private
-if [ -d maps ]
+[ -d cfg/private ] || git clone git@github.com:chillavanilla/private.git cfg/private
+if [ ! -d maps ]
 then
-	# TODO: this is wrong we need the release archive or correct git checkout
-	#       use ./lib/get_maps.sh but it needs to be updated first to allow non interactive
-	git clone git@github.com:teeworlds/teeworlds-maps.git maps
+	./lib/get_maps.sh --non-interactive --output-dir maps --source "vanilla 0.7.1 release"
 fi
 
 if [ ! -f server.cnf ]
@@ -77,7 +75,7 @@ then
 	EOF
 fi
 
-mkdir ~/git
+mkdir -p ~/git
 cd ~/git
 
 [ -d ddnet-insta ] || git clone git@github.com:ZillyInsta/ddnet-insta.git
