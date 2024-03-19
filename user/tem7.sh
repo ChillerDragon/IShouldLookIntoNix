@@ -8,7 +8,8 @@ if [ ! -d tem-07 ]
 then
 	git clone git@github.com:DDNetPP/server.git tem-07
 fi
-cd tem-07
+
+cd ~/tem-07
 
 [ -d cfg ] || git clone git@github.com:chillavanilla/cfg.git
 [ -d cfg/private ] || git clone git@github.com:chillavanilla/private.git cfg/private
@@ -33,11 +34,16 @@ then
 		pip install -r requirements.txt
 	fi
 
-	# TODO: symlinks
 	ln -s ../../tem-07/cfg/private/public7.settings .
+	ln -s ../../tem-07/cfg/private/locked_names.json .
 fi
 
+cd ~/tem-07
 if [ ! -d maps ]
 then
-	./lib/get_maps.sh --non-interactive --output-dir maps --source "vanilla 0.7.1 release"
+	./lib/get_maps.sh --non-interactive --output-dir "$PWD/maps" --source "vanilla 0.7.1 release"
 fi
+
+cd ~/git
+[ -d teeworlds ] || git clone --recursive git@github.com:teeworlds/teeworlds
+
