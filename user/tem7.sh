@@ -11,12 +11,25 @@ fi
 
 cd ~/tem-07
 
+mkdir -p stats
 [ -d cfg ] || git clone git@github.com:chillavanilla/cfg.git
 [ -d cfg/private ] || git clone git@github.com:chillavanilla/private.git cfg/private
 
 if [ ! -f server.cnf ]
 then
 	printf '%s\n' "include ./cfg/private/07.cnf" > server.cnf
+fi
+
+if [ ! -f autoexec.cfg ]
+then
+	cat <<-EOF > autoexec.cfg
+	# cfg repo template config
+	#
+	# SERVERNAME: tem07
+
+	exec cfg/07.cfg
+	
+	EOF
 fi
 
 mkdir -p ~/git
