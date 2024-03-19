@@ -60,3 +60,18 @@ fi
 cd ~/git
 [ -d teeworlds ] || git clone --recursive git@github.com:teeworlds/teeworlds
 
+cd ~/tem-07
+if [ ! -f ./bin/vanilla7_srv ]
+then
+	# hack to trigger compile once for a tem server
+	printf '%s\n' 'server_type=teeworlds' >> server.cnf
+	./update.sh
+
+	# TODO: this is never run because ./update.sh fails with exit code 1 always?!
+
+	grep -v '^server_type=teeworlds' server.cnf > server.cnf.tmp
+	mv server.cnf.tmp server.cnf
+
+	mv ./bin/tem07 ./bin/vanilla7_srv
+fi
+
