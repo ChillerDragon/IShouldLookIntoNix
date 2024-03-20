@@ -10,7 +10,7 @@ set -euo pipefail
 [ -f ./.env ] && source ./.env
 
 SSH_PORT="${SSH_PORT:-$1}"
-if [[ "$SSH_PORT" =~ ^[0-9]+$ ]]
+if [[ ! "$SSH_PORT" =~ ^[0-9]+$ ]]
 then
   printf '[-] Error: invalid ssh port %s\n' "$SSH_PORT" 1>&2
   exit 1
