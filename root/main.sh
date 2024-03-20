@@ -3,7 +3,10 @@
 set -euo pipefail
 
 # shellcheck disable=1091
-[ -f .env ] && source ./.env
+[ -f ./../.env ] && source ./../.env
+
+# shellcheck disable=1091
+[ -f ./.env ] && source ./.env
 
 if [ "$SSH_PORT" = "" ]
 then
@@ -15,6 +18,8 @@ then
   printf 'enter your ssh public key:\n'
   read -e -r -p '> ' SSH_PUBLIC_KEY
 fi
+
+[ -f ./root/packages.sh ] && cd ./root
 
 ./packages.sh
 ./minimal_dotfiles.sh
