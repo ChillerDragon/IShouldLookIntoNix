@@ -88,8 +88,7 @@ iptables -A INPUT -p udp -m udp --sport 53 -j ACCEPT
 iptables -A INPUT -p udp -j DROP
 
 
-if [ -f /etc/iptables/rules.v4 ] && [ "$(cat /etc/iptables/rules.v4)" != "" ] ||
-	[ -f /etc/iptables/rules.v6 ] && [ "$(cat /etc/iptables/rules.v6)" != "" ]
+if [ -s /etc/iptables/rules.v4 ] || [ -s /etc/iptables/rules.v6 ]
 then
 	cat <<-EOF 1>&2
 	[-] Error: /etc/iptables/rules.v4 or /etc/iptables/rules.v6 already exists
@@ -108,4 +107,8 @@ ip6tables-save > /dev/null
 
 iptables-save > /etc/iptables/rules.v4
 ip6tables-save > /etc/iptables/rules.v6
+
+printf '[*] iptables written to/etc/iptables/rules.v4\n'
+printf '[*] iptables written to/etc/iptables/rules.v6\n'
+printf '[*] iptables saved across reboots .. OK\n'
 
