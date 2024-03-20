@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-UNIX_USER="${UNIX_USER:-${1:-}}"
+UNIX_USER="${1:-}"
 if [ "$UNIX_USER" = "" ]
 then
   printf '%s\n' "usage: user_tools.sh UNIX_USER" 1>&2
