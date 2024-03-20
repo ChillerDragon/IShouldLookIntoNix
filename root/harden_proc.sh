@@ -16,7 +16,7 @@ fi
 
 proc_fstab='proc    /proc    proc    defaults,nosuid,nodev,noexec,relatime,hidepid=2     0     0'
 
-if ! grep -q proc
+if ! grep -q proc /etc/fstab
 then
   printf '%s\n' "$proc_fstab" >> /etc/fstab
   printf '[*] added /proc hardening to /etc/fstab to persist across reboots\n'
