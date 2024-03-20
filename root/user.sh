@@ -35,6 +35,7 @@ then
     --ingroup users teeworlds
   chown -R teeworlds:admin /home/teeworlds/
   chmod o-x /home/teeworlds/
+  printf '[*] created user teeworlds .. OK\n'
 fi
 
 if [ ! -f /home/teeworlds/.ssh/authorized_keys ]
@@ -52,6 +53,7 @@ then
     --groups admin sudo \
     --home-dir /home/chiller chiller
   chmod o-x /home/chiller
+  printf '[*] created user chiller .. OK\n'
 fi
 
 if [ ! -f /home/chiller/.ssh/authorized_keys ]
