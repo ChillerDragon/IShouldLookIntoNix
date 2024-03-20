@@ -31,6 +31,9 @@ chmod o-r /etc/.*
 chmod o-x /etc/*/
 
 printf '[*] allowing read access for /etc/alternatives and /etc/profile\n'
-chmod o+r /etc/alternatives
+chmod o+x /etc/alternatives
 chmod o+r /etc/profile
+
+printf '[*] allow dns for all users /etc/resolv.conf\n'
+chmod o+r /etc/resolv.conf
 
