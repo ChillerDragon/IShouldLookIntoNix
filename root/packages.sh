@@ -64,9 +64,10 @@ packages=(
   unzip
   strace
   tcpdump nload
-  netcat
   bc
 )
+
+apt-get -y install netcat || apt-get -y install netcat-openbsd
 
 apt-get -y install "${packages[@]}"
 
