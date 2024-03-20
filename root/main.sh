@@ -25,6 +25,7 @@ fi
 ./harden_ssh.sh "$SSH_PORT"
 ./user_tools.sh chiller
 ./user_tools.sh teeworlds
+./harden_limits.sh
 
 if [ ! -f /root/.ssh/authorized_keys ]
 then
