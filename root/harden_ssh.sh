@@ -1,7 +1,13 @@
 #!/bin/bash
-#
+# harden_ssh.sh
 
 set -euo pipefail
+
+# shellcheck disable=1091
+[ -f ./../.env ] && source ./../.env
+
+# shellcheck disable=1091
+[ -f ./.env ] && source ./.env
 
 SSH_PORT="${SSH_PORT:-$1}"
 if [[ "$SSH_PORT" =~ ^[0-9]+$ ]]
