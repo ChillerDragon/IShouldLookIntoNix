@@ -67,6 +67,7 @@ iptables -A INPUT -p tcp -m tcp -m conntrack -m multiport --ctstate NEW ! --dpor
 iptables -A INPUT -p udp -m udp --dport 8303 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 8709 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 53 -j ACCEPT
+iptables -A INPUT -p udp -m udp --sport 53 -j ACCEPT
 iptables -A INPUT -p udp -j DROP
 
 
