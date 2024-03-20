@@ -29,7 +29,7 @@ cp ./user/install_tools.sh "$script_dst" || \
   cp ../user/install_tools.sh "$script_dst"
 chown "$UNIX_USER:$UNIX_USER" "$script_dst"
 
-su - teeworlds -c "/bin/bash $script_dst"
+su - "$UNIX_USER" -c "/bin/bash $script_dst"
 
 printf '[*] done all tools installed for user %s.\n' "$UNIX_USER"
 
