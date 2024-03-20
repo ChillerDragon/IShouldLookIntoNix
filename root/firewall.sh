@@ -34,7 +34,8 @@ then
   exit 1
 fi
 
-if grep -qF '0x20=0x544b454e' /etc/iptables/rules.v4 &&
+if [ -f /etc/iptables/rules.v4 ] &&
+	grep -qF '0x20=0x544b454e' /etc/iptables/rules.v4 &&
 	grep -qF "dports $SSH_PORT -j DROP" /etc/iptables/rules.v4
 then
 	cat <<-EOF
@@ -86,4 +87,25 @@ iptables -A INPUT -p udp -m udp --dport 53 -j ACCEPT
 iptables -A INPUT -p udp -m udp --sport 53 -j ACCEPT
 iptables -A INPUT -p udp -j DROP
 
+
+if [ -f /etc/iptables/rules.v4 ] && [ "$(cat /etc/iptables/rules.v4)" != "" ] ||
+	[ -f /etc/iptables/rules.v6 ] && [ "$(cat /etc/iptables/rules.v6)" != "" ]
+then
+	cat <<-EOF 1>&2
+	[-] Error: /etc/iptables/rules.v4 or /etc/iptables/rules.v6 already exists
+	[-]        not overwriting. iptables are not saved accross reboots
+	[-]        to force recreate run the following command:
+
+	  rm /etc/iptables/rules.v4 /etc/iptables/rules.v6
+
+	EOF
+	exit 1
+fi
+
+# check for errors before writing
+iptables-save > /dev/null
+ip6tables-save > /dev/null
+
+iptables-save > /etc/iptables/rules.v4
+ip6tables-save > /etc/iptables/rules.v6
 
