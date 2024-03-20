@@ -29,7 +29,7 @@ then
 fi
 
 cust_ssh_conf=/etc/ssh/sshd_config.d/chiller.conf
-if [ ! -f "$cust_ssh_conf" ]
+if [ -f "$cust_ssh_conf" ]
 then
 	if ! grep -q "Port $SSH_PORT" "$cust_ssh_conf"
 	then
