@@ -9,6 +9,10 @@ chown -R root:admin "${restricted_dirs[@]}"
 chmod o-x "${restricted_dirs[@]}"
 chmod o-r "${restricted_dirs[@]}"
 
+printf '[*] disallow listing /home\n'
+chmod o-r /home/
+chown root:admin /home
+
 printf '[*] harden /etc\n'
 chmod o-r /etc
 shopt -s extglob
