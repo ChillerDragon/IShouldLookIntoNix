@@ -50,7 +50,7 @@ then
 	useradd \
 		--shell /bin/bash \
 		--create-home \
-		--groups admin sudo \
+		--groups admin,sudo \
 		--home-dir /home/chiller chiller
 	chmod o-x /home/chiller
 	printf '[*] created user chiller .. OK\n'
