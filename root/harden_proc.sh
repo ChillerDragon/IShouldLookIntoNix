@@ -16,7 +16,7 @@ fi
 
 read -r -d '' proc_fstab << EOF || true
 proc /proc        proc    defaults,nosuid,nodev,noexec,relatime,hidepid=2     0     0
-proc /proc        proc    defaults,hidepid=2,gid=admin 0 0
+proc /proc        proc    defaults,hidepid=0,gid=admin 0 0
 EOF
 
 if ! grep -q proc /etc/fstab
