@@ -33,15 +33,15 @@ then
 		--shell /bin/bash \
 		--disabled-password \
 		--ingroup users teeworlds
-			chown -R teeworlds:admin /home/teeworlds/
-			chmod o-x /home/teeworlds/
-			printf '[*] created user teeworlds .. OK\n'
+	chown -R teeworlds:admin /home/teeworlds/
+	chmod o-x /home/teeworlds/
+	printf '[*] created user teeworlds .. OK\n'
 fi
 
 if [ ! -f /home/teeworlds/.ssh/authorized_keys ]
 then
 	mkdir -p /home/teeworlds/.ssh
-	chown teeworlds:teeworlds /home/chiller/.ssh/
+	chown teeworlds:teeworlds /home/teeworlds/.ssh/
 	printf '%s\n' "$SSH_PUBLIC_KEY" > /home/teeworlds/.ssh/authorized_keys
 fi
 
@@ -52,8 +52,8 @@ then
 		--create-home \
 		--groups admin sudo \
 		--home-dir /home/chiller chiller
-			chmod o-x /home/chiller
-			printf '[*] created user chiller .. OK\n'
+	chmod o-x /home/chiller
+	printf '[*] created user chiller .. OK\n'
 fi
 
 if [ ! -f /home/chiller/.ssh/authorized_keys ]
