@@ -8,10 +8,10 @@ then
   exit 0
 fi
 
-printf 'export EDITOR=vim' >> ~/.bashrc
+printf 'export EDITOR=vim\n' >> ~/.bashrc
 if ! grep -q '^alias x' ~/.bashrc
 then
-  printf "alias x='ls && git status'" >> ~/.bashrc
+  printf "alias x='ls && git status'\n" >> ~/.bashrc
   printf '[*] set x alias .. OK\n'
 fi
 
