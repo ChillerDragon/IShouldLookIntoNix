@@ -18,11 +18,11 @@ fi
 
 ./packages.sh
 ./minimal_dotfiles.sh
-./firewall.sh "$SSH_PORT"
 ./user.sh "$SSH_PUBLIC_KEY"
 ./harden_filesystem.sh
 ./harden_proc.sh
 ./harden_ssh.sh "$SSH_PORT"
+./firewall.sh "$SSH_PORT"
 ./user_tools.sh chiller
 ./user_tools.sh teeworlds
 ./harden_limits.sh
