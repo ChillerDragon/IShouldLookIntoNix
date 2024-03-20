@@ -2,6 +2,14 @@
 
 set -euo pipefail
 
+for user in /home/*/
+do
+	[ -d "$user" ] && continue
+
+	printf '[-] Error: no users found in /home make sure to create them first\n'
+	exit 1
+done
+
 restricted_dirs=(/usr/games /usr/src /media /opt /srv /var)
 
 printf '[*] removing read access for %s\n' "${restricted_dirs[*]}"
@@ -10,6 +18,7 @@ chmod o-x "${restricted_dirs[@]}"
 chmod o-r "${restricted_dirs[@]}"
 
 printf '[*] disallow listing /home\n'
+chmod o-x /home/*/
 chmod o-r /home/
 chown root:admin /home
 
