@@ -11,7 +11,9 @@ chmod o-r "${restricted_dirs[@]}"
 
 printf '[*] harden /etc\n'
 chmod o-r /etc
-chmod o-r /etc/*
+shopt -s extglob
+chmod o-r /etc/!(mtab)
+shopt -u extglob
 chmod o-r /etc/.*
 chmod o-x /etc/*/
 
