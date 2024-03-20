@@ -17,6 +17,7 @@ then
 fi
 
 ./packages.sh
+./minimal_dotfiles.sh
 ./firewall.sh "$SSH_PORT"
 ./user.sh "$SSH_PUBLIC_KEY"
 ./harden_filesystem.sh
