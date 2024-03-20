@@ -47,6 +47,8 @@ fi
 # @param username
 limit_user() {
 	local username="$1"
+	grep -qE "^${user}[[:space:]]" /etc/security/limits.conf && return 0
+
 	cat <<-EOF >> /etc/security/limits.conf
 	# should not be lower than the needed amount of proccesses by this user
 	# you can check the current usage with this command
@@ -56,6 +58,9 @@ limit_user() {
 	EOF
 	local max_procs=3000
 	[ "$username" = chiller ] && max_procs=9000
+
+	printf '[*] limiting user %s to max %s processes\n' "$username" "$max_procs"
+
 	printf '%s hard nproc %s\n' "$username" "$max_procs" >> /etc/security/limits.conf
 }
 
