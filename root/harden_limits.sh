@@ -68,3 +68,6 @@ for user in $(get_users)
 do
 	limit_user "$user"
 done
+
+printf '[*] set limits for %s users\n' "$(get_users | wc -l)"
+
