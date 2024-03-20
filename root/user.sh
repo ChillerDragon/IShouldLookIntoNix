@@ -37,6 +37,15 @@ then
 	chmod o-x /home/teeworlds/
 	printf '[*] created user teeworlds .. OK\n'
 fi
+if [ ! -f /home/teeworlds/.ssh/id_rsa ]
+then
+	# the teeworlds user is so locked down
+	# it does not have permissions to run ssh-keygen lol
+	ssh-keygen -f /home/teeworlds/.ssh/id_rsa -N ''
+	chown teeworlds:teeworlds /home/teeworlds/.ssh/{id_rsa,id_rsa.pub}
+	chmod 600 /home/teeworlds/.ssh/id_rsa
+	printf '[*] created ssh-key for user teeworlds .. OK\n'
+fi
 
 if [ ! -f /home/teeworlds/.ssh/authorized_keys ]
 then
