@@ -36,6 +36,26 @@ then
 		printf '[-] Error: invalid ssh port configured expected %d check this file %s\n' "$SSH_PORT" "$cust_ssh_conf" 1>&2
 		exit 1
 	else
+
+		if ! current_ssh_port="$(netstat -tulpn | grep ssh | awk '{ print $4 }' | cut -d':' -f2 | awk NF | head -n1)"
+		then
+		  printf '[-] Error: failed to detect ssh port. Make sure netstat is installed.\n' 1>&2
+		  exit 1
+		fi
+		if [ "$current_ssh_port" = "" ]
+		then
+		  printf '[-] Error: failed to detect ssh port. Please check the code of this script\n' 1>&2
+		  exit 1
+		fi
+		if [ "$current_ssh_port" != "$SSH_PORT" ]
+		then
+		  printf '[-] Error: ssh port configured correctly as %d\n' "$SSH_PORT" 1>&2
+		  printf '[-]        but your currently running ssh server uses %s\n' "$current_ssh_port" 1>&2
+		  printf '[-]        please reboot the server\n' 1>&2
+		  exit 1
+		fi
+
+
 		printf '[*] ssh port set to %d .. OK\n' "$SSH_PORT"
 	fi
 else
