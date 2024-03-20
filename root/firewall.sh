@@ -34,6 +34,20 @@ then
   exit 1
 fi
 
+if grep -qF '0x20=0x544b454e' /etc/iptables/rules.v4 &&
+	grep -qF "dports $SSH_PORT -j DROP" /etc/iptables/rules.v4
+then
+	cat <<-EOF
+	[*] iptables already saved .. OK
+	[*] if they do not show up in iptables -L try rebooting the server
+	[*] to force recreate run the following command:
+
+	  rm /etc/iptables/rules.v4 /etc/iptables/rules.v6
+
+	EOF
+	exit 0
+fi
+
 backup_file="/root/iptables_save_$(date '+%F-%H-%M_%s').txt"
 iptables-save > "$backup_file"
 
