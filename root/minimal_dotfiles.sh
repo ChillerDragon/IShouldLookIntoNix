@@ -28,4 +28,8 @@ if [ "$(git config --global user.email)" = "" ]
 then
   git config --global user.email chillerdragon@gmail.com
 fi
+if [ "$(git config --global pull.rebase)" = "" ]
+then
+  git config --global pull.rebase true
+fi
 
