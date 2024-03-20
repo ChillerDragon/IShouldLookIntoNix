@@ -41,6 +41,11 @@ if [ ! -f /home/teeworlds/.ssh/id_rsa ]
 then
 	# the teeworlds user is so locked down
 	# it does not have permissions to run ssh-keygen lol
+	if [ ! -d /home/teeworlds/.ssh ]
+	then
+		mkdir /home/teeworlds/.ssh
+		chown -R teeworlds:teeworlds /home/teeworlds/.ssh
+	fi
 	ssh-keygen -f /home/teeworlds/.ssh/id_rsa -N ''
 	chown teeworlds:teeworlds /home/teeworlds/.ssh/{id_rsa,id_rsa.pub}
 	chmod 600 /home/teeworlds/.ssh/id_rsa
