@@ -37,7 +37,7 @@ if [ "$current_limits" != "" ]
 then
 	for user in $(get_users)
 	do
-		grep -qE "^${user}[[:space:]]" && continue
+		grep -qE "^${user}[[:space:]]" /etc/security/limits.conf && continue
 
 		printf '[-] Error: user %s not found in /etc/security/limits.conf\n' "$user" 1>&2
 		exit 1
