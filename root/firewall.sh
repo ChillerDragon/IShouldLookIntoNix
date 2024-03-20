@@ -108,7 +108,7 @@ ip6tables-save > /dev/null
 iptables-save > /etc/iptables/rules.v4
 ip6tables-save > /etc/iptables/rules.v6
 
-printf '[*] iptables written to/etc/iptables/rules.v4\n'
-printf '[*] iptables written to/etc/iptables/rules.v6\n'
+printf '[*] iptables written to /etc/iptables/rules.v4\n'
+printf '[*] iptables written to /etc/iptables/rules.v6\n'
 printf '[*] iptables saved across reboots .. OK\n'
 
