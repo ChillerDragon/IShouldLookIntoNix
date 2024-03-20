@@ -60,13 +60,13 @@ install_rustup() {
 install_dotfiles() {
   if [ ! -d ~/git/dotfiles ]
   then
-    mkdir ~/git
+    mkdir -p ~/git
     cd ~/git
     git clone git@github.com:ChillerDragon/dotfiles
   fi
   if [ ! -d ~/git/crools ]
   then
-    mkdir ~/git
+    mkdir -p ~/git
     cd ~/git
     git clone git@github.com:ChillerDragon/crools
   fi
