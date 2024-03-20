@@ -10,6 +10,12 @@ fi
 
 printf '[*] installing tools for user=%s uid=%d euid=%d\n' "$USER" "$UID" "$EUID"
 
+GIT_HOST=git@github.com:
+if [ "$USER" = teeworlds ]
+then
+	GIT_HOST=https://github.com/
+fi
+
 if [ ! -f ~/.ssh/known_hosts ]
 then
 	mkdir -p ~/.ssh
@@ -62,13 +68,13 @@ install_dotfiles() {
   then
     mkdir -p ~/git
     cd ~/git
-    git clone git@github.com:ChillerDragon/dotfiles
+    git clone "${GIT_HOST}ChillerDragon/dotfiles"
   fi
   if [ ! -d ~/git/crools ]
   then
     mkdir -p ~/git
     cd ~/git
-    git clone git@github.com:ChillerDragon/crools
+    git clone "${GIT_HOST}ChillerDragon/crools"
   fi
   printf '[*] dotfiles .. OK\n'
 }
