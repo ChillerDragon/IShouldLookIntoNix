@@ -1,9 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
-
-apt-get -y update
-apt-get -y upgrade
+set -eu
 
 packages=(
   sudo
@@ -66,6 +63,30 @@ packages=(
   tcpdump nload
   bc
 )
+
+# cache might contain removed packages
+# but at least it is fast
+apt_list="$(apt-cache search . | cut -d' ' -f1)"
+have_all=1
+for package in "${packages[@]}"
+do
+	# this breaks with set -o pipefail
+	if ! printf '%s\n' "$apt_list" | grep -qxF "$package"
+	then
+		printf "[*] missing package '%s'. Installing ...\n" "$package"
+		have_all=0
+		break
+	fi
+done
+
+if [ "$have_all" = 1 ]
+then
+	printf '[*] all packages already installed .. OK\n'
+	exit 0
+fi
+
+apt-get -y update
+apt-get -y upgrade
 
 apt-get -y install netcat || apt-get -y install netcat-openbsd
 
