@@ -19,6 +19,12 @@ then
   read -e -r -p '> ' SSH_PUBLIC_KEY
 fi
 
+if [ ! -f /root/.ssh/authorized_keys ]
+then
+  mkdir -p /root/.ssh
+  printf '%s\n' "$SSH_PUBLIC_KEY" >> /root/.ssh/authorized_keys
+fi
+
 [ -f ./root/packages.sh ] && cd ./root
 
 ./packages.sh
@@ -31,10 +37,4 @@ fi
 ./user_tools.sh chiller
 ./user_tools.sh teeworlds
 ./harden_limits.sh
-
-if [ ! -f /root/.ssh/authorized_keys ]
-then
-  mkdir -p /root/.ssh
-  printf '%s\n' "$SSH_PUBLIC_KEY" >> /root/.ssh/authorized_keys
-fi
 
