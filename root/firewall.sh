@@ -2,6 +2,12 @@
 
 set -euo pipefail
 
+# shellcheck disable=1091
+[ -f ./../.env ] && source ./../.env
+
+# shellcheck disable=1091
+[ -f ./.env ] && source ./.env
+
 SSH_PORT="${SSH_PORT:-$1}"
 [ "$SSH_PORT" = "" ] && SSH_PORT=22
 
@@ -11,10 +17,28 @@ then
   exit 1
 fi
 
+if ! current_ssh_port="$(netstat -tulpn | grep ssh | awk '{ print $4 }' | cut -d':' -f2 | awk NF | head -n1)"
+then
+  printf '[-] Error: failed to detect ssh port. Make sure netstat is installed.\n' 1>&2
+  exit 1
+fi
+if [ "$current_ssh_port" = "" ]
+then
+  printf '[-] Error: failed to detect ssh port. Please check the code of this script\n' 1>&2
+  exit 1
+fi
+if [ "$current_ssh_port" != "$SSH_PORT" ]
+then
+  printf '[-] Error: is your ssh server really running on %d\n' "$SSH_PORT" 1>&2
+  printf '[-]        detected ssh server running on port %d\n' "$current_ssh_port" 1>&2
+  exit 1
+fi
+
 backup_file="/root/iptables_save_$(date '+%F-%H-%M_%s').txt"
 iptables-save > "$backup_file"
 
 printf '[*] backed up iptables to %s\n' "$backup_file"
+printf '[*] whitelisting ssh port %d\n' "$SSH_PORT"
 
 # yikes
 update-alternatives --set iptables /usr/sbin/iptables-legacy
