@@ -9,7 +9,13 @@ chown -R root:admin "${restricted_dirs[@]}"
 chmod o-x "${restricted_dirs[@]}"
 chmod o-r "${restricted_dirs[@]}"
 
-printf '[*] allwowing read access for /etc/alternatives and /etc/profile\n'
+printf '[*] harden /etc\n'
+chmod o-r /etc
+chmod o-r /etc/*
+chmod o-r /etc/.*
+chmod o-x /etc/*/
+
+printf '[*] allowing read access for /etc/alternatives and /etc/profile\n'
 chmod o+r /etc/alternatives
 chmod o+r /etc/profile
 
