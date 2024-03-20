@@ -5,6 +5,12 @@
 
 set -euo pipefail
 
+# shellcheck disable=1091
+[ -f ./../.env ] && source ./../.env
+
+# shellcheck disable=1091
+[ -f ./.env ] && source ./.env
+
 SSH_PUBLIC_KEY="${SSH_PUBLIC_KEY:-$1}"
 if [ "$SSH_PUBLIC_KEY" = "" ]
 then
