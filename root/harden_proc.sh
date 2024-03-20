@@ -14,7 +14,10 @@ else
   printf '[*] mounted /proc with hidepid check with "ps aux" you should now only see your processes\n'
 fi
 
-proc_fstab='proc    /proc    proc    defaults,nosuid,nodev,noexec,relatime,hidepid=2     0     0'
+read -r -d '' proc_fstab << EOF || true
+proc /proc        proc    defaults,nosuid,nodev,noexec,relatime,hidepid=2     0     0
+proc /proc        proc    defaults,hidepid=2,gid=admin 0 0
+EOF
 
 if ! grep -q proc /etc/fstab
 then
@@ -24,7 +27,7 @@ else
   current_proc="$(grep proc /etc/fstab)"
   if [ "$current_proc" = "$proc_fstab" ]
   then
-    printf '[*] /proc hardening already in /etc/fstab\n .. OK\n'
+    printf '[*] /proc hardening already in /etc/fstab .. OK\n'
   else
     printf '[-] Error: unexpected /proc mount found in /etc/fstab .. ERROR\n' 1>&2
     printf '[-]        expected: %s\n' "$proc_fstab" 1>&2
