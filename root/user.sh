@@ -18,6 +18,12 @@ then
   exit 1
 fi
 
+if ! groups | grep -q admin
+then
+  addgroup admin
+printf '[*] created admin group .. OK\n'
+fi
+
 if ! grep -q '^teeworlds:' /etc/passwd
 then
   addgroup teeworlds
@@ -40,7 +46,6 @@ fi
 
 if ! grep -q '^chiller:' /etc/passwd
 then
-  addgroup admin
   useradd \
     --shell /bin/bash \
     --create-home \
