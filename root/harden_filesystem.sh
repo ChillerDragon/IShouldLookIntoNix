@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-restricted_dirs=(/usr/games /usr/src /etc /media /opt /srv /var)
+restricted_dirs=(/usr/games /usr/src /media /opt /srv /var)
 
 printf '[*] removing read access for %s\n' "${restricted_dirs[*]}"
 chown -R root:admin "${restricted_dirs[@]}"
