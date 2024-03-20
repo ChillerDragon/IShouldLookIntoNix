@@ -37,3 +37,9 @@ chmod o+r /etc/profile
 printf '[*] allow dns for all users /etc/resolv.conf\n'
 chmod o+r /etc/resolv.conf
 
+printf '[*] allow access to ca certs for ssl /etc/ssl/certs/ca-certificates.crt\n'
+chmod o+x /etc/ssl
+chmod o+x /etc/ssl/certs
+chmod o-r /etc/ssl/certs/*
+chmod o+r /etc/ssl/certs/ca-certificates.crt
+
