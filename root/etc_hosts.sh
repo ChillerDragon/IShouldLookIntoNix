@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-if ! grep -q 'nectup' /etc/hosts
+if ! grep -q 'netcup' /etc/hosts
 then
 	printf '%s\n' '45.142.178.158  netcup' >> /etc/hosts
 	printf '[*] added netcup to the hosts file .. OK\n'
