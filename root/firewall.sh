@@ -85,6 +85,7 @@ iptables -A INPUT -p udp -m udp --dport 8303 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 8709 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 53 -j ACCEPT
 iptables -A INPUT -p udp -m udp --sport 53 -j ACCEPT
+iptables -A INPUT -p udp -m udp --dport 1194 -j ACCEPT
 iptables -A INPUT -p udp -j DROP
 
 
