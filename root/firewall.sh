@@ -87,7 +87,7 @@ iptables -A INPUT -p udp -m udp --dport 53 -j ACCEPT
 iptables -A INPUT -p udp -m udp --sport 53 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 1194 -j ACCEPT
 # iptables -A INPUT -p udp -j DROP
-iptables -A INPUT -p udp -m udp -m conntrack -m multiport --ctstate NEW  -j DROP
+iptables -A INPUT -p udp -m udp -m conntrack -m multiport --ctstate NEW ! --dports 1194 -j DROP
 
 
 if [ -s /etc/iptables/rules.v4 ] || [ -s /etc/iptables/rules.v6 ]
