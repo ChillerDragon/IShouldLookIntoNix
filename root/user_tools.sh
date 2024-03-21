@@ -36,12 +36,10 @@ cd "/home/$UNIX_USER"
 if [ ! -d setup-chiller-vps ]
 then
 	git clone git@github.com:ChillerDragon/setup-chiller-vps.git
+	chown -R "$UNIX_USER:$UNIX_USER" "/home/$UNIX_USER/setup-chiller-vps"
 fi
-cd setup-chiller-vps
-git pull
-chown -R "$UNIX_USER:$UNIX_USER" "/home/$UNIX_USER/setup-chiller-vps"
 
-su - "$UNIX_USER" -c "/bin/bash -c 'cd /home/$UNIX_USER/setup-chiller-vps && ./user/install_tools.sh'"
+su - "$UNIX_USER" -c "/bin/bash -c 'cd /home/$UNIX_USER/setup-chiller-vps && git pull && ./user/install_tools.sh'"
 
 printf '[*] done all tools installed for user %s.\n' "$UNIX_USER"
 
