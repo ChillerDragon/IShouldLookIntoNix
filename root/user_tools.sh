@@ -12,7 +12,7 @@ then
 	exit 1
 fi
 
-if [[ "$UNIX_USER" =~ ^[a-z][a-z0-9]*$ ]]
+if [[ ! "$UNIX_USER" =~ ^[a-z][a-z0-9]*$ ]]
 then
 	printf "[-] Error: invalid unix user name '%s' only [a-z] is allowed\n" "$UNIX_USER" 1>&2
 	exit 1
