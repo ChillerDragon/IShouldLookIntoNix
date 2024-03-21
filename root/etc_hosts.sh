@@ -9,7 +9,7 @@ then
 fi
 if ! grep -q 'zap' /etc/hosts
 then
-	printf '%s\n' '185.223.31.160  zap' >> /etc/hoss
+	printf '%s\n' '185.223.31.160  zap' >> /etc/hosts
 	printf '[*] added zap to the hosts file .. OK\n'
 fi
 
