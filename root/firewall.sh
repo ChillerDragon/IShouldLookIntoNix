@@ -36,8 +36,8 @@ fi
 
 if iptables-save | grep -qE '(docker|tun)'
 then
-	printf '[-] Error: skipping firewall setup because docker or a vpn is detected' 1>&2
-	printf '[-]        there is no support for docker or vpns yet with the current firewall' 1>&2
+	printf '[-] Error: skipping firewall setup because docker or a vpn is detected\n' 1>&2
+	printf '[-]        there is no support for docker or vpns yet with the current firewall\n' 1>&2
 	exit 1
 fi
 
