@@ -66,8 +66,8 @@ iptables -t nat -F
 iptables -t mangle -F
 iptables -F
 iptables -X
-iptables -t raw -A PREROUTING -p udp -j NOTRACK
-iptables -t raw -A OUTPUT -p udp -j NOTRACK
+# iptables -t raw -A PREROUTING -p udp -j NOTRACK
+# iptables -t raw -A OUTPUT -p udp -j NOTRACK
 iptables -N serverinfo
 iptables -N newconn
 iptables -A INPUT -p udp -m u32 --u32 "38=0x67696533" -j serverinfo
@@ -86,7 +86,8 @@ iptables -A INPUT -p udp -m udp --dport 8709 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 53 -j ACCEPT
 iptables -A INPUT -p udp -m udp --sport 53 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 1194 -j ACCEPT
-iptables -A INPUT -p udp -j DROP
+# iptables -A INPUT -p udp -j DROP
+iptables -A INPUT -p udp -m udp -m conntrack -m multiport --ctstate NEW  -j DROP
 
 
 if [ -s /etc/iptables/rules.v4 ] || [ -s /etc/iptables/rules.v6 ]
