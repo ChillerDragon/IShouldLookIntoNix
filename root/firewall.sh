@@ -89,6 +89,7 @@ iptables -I OUTPUT -d 147.251.0.0/16 -j DROP
 iptables -A INPUT -s 127.0.0.1 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp -m conntrack -m multiport --ctstate NEW ! --dports "$SSH_PORT" -j DROP
 iptables -A INPUT -p udp -m udp --dport 8303 -j ACCEPT
+iptables -A INPUT -p udp -m udp --dport 8304 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 8704 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 8709 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 53 -j ACCEPT
