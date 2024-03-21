@@ -40,6 +40,7 @@ fi
 
 [ -f ./root/packages.sh ] && cd ./root
 
+./etc_hosts.sh
 ./packages.sh
 ./minimal_dotfiles.sh
 ./user.sh "$SSH_PUBLIC_KEY"
