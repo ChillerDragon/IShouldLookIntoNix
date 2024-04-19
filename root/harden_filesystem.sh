@@ -34,6 +34,9 @@ printf '[*] allowing read access for /etc/alternatives and /etc/profile\n'
 chmod o+x /etc/alternatives
 chmod o+r /etc/profile
 
+printf '[*] allow /etc/passwd for ssh and git\n'
+chmod o+r /etc/passwd
+
 printf '[*] allow dns for all users /etc/resolv.conf\n'
 chmod o+r /etc/resolv.conf
 
