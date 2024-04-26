@@ -39,6 +39,7 @@ chmod o-x /var/*/
 chmod o-r /var/
 
 printf '[*] open /var/cache/apt\n'
+chmod o+x /var/
 chmod o+x /var/cache/
 chmod o+x /var/cache/apt/
 chmod o+x /var/cache/apt/archives/
