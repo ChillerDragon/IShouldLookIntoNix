@@ -43,10 +43,10 @@ chmod o+x /var/cache/
 chmod o+x /var/cache/apt/
 chmod o+x /var/cache/apt/archives/
 
-printf '[*] open /var/lib/apt\n'
+printf '[*] open /var/lib/apt/lists/\n'
 chmod o+x /var/lib/
 chmod o+x /var/lib/apt/
-chmod o+x /var/lib/apt/archives/
+chmod o+x /var/lib/apt/lists/
 
 # https://askubuntu.com/a/908825
 printf '[*] allow _apt user to use /var/cache/apt/archives/partial/\n'
