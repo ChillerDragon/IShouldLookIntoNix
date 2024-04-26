@@ -30,6 +30,10 @@ shopt -u extglob
 chmod o-r /etc/.*
 chmod o-x /etc/*/
 
+printf '[*] open /etc/apt for _apt user\n'
+chmod o+x /etc/apt
+chmod o+r /etc/apt
+
 printf '[*] harden /var\n'
 chown root:admin /var
 # allow cd /var because a lot of tools need it like _apt or www-data
