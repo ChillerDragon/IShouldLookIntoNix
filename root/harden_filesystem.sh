@@ -39,13 +39,22 @@ chmod o-x /var/*/
 chmod o-r /var/
 
 printf '[*] open /var/cache/apt\n'
-chmod o+x /var/cache
-chmod o+x /var/cache/apt
+chmod o+x /var/cache/
+chmod o+x /var/cache/apt/
+chmod o+x /var/cache/apt/archives/
+
+printf '[*] open /var/lib/apt\n'
+chmod o+x /var/lib/
+chmod o+x /var/lib/apt/
+chmod o+x /var/lib/apt/archives/
 
 # https://askubuntu.com/a/908825
-printf '[*] allow _apt user to use /var/cache\n'
+printf '[*] allow _apt user to use /var/cache/apt/archives/partial/\n'
 chown -Rv _apt:root /var/cache/apt/archives/partial/
 chmod -Rv 700 /var/cache/apt/archives/partial/
+
+printf '[*] allow _apt user to use /var/lib/apt/lists/partial/\n'
+chown -R _apt:root /var/lib/apt/lists/partial/
 
 printf '[*] allowing read access for /etc/alternatives and /etc/profile\n'
 chmod o+x /etc/alternatives
