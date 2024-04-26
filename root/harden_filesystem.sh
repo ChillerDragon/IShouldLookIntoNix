@@ -22,6 +22,11 @@ chmod o-x /home/*/
 chmod o-r /home/
 chown root:admin /home
 
+printf '[*] harden /run\n'
+chown root:admin /run
+chmod g+x /run
+chmod o-x /run
+
 printf '[*] harden /etc\n'
 chmod o-r /etc
 shopt -s extglob
