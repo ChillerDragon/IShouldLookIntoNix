@@ -14,6 +14,13 @@ cd gctf1
 [ -d maps ] || git clone git@github.com:ZillyInsta/maps-06.git maps
 [ -d maps7 ] || git clone git@github.com:ZillyInsta/maps-07.git maps7
 
+if [ -d cfg ]
+then
+	cd cfg || exit 1
+	[ -d cfg-secrets ] || git clone git@github.com:ZillyInsta/cfg-secrets.git
+	cd ..
+fi
+
 if [ ! -f autoexec.cfg ]
 then
 	cat <<-EOF > autoexec.cfg
