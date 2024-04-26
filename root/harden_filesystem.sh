@@ -46,3 +46,8 @@ chmod o+x /etc/ssl/certs
 chmod o-r /etc/ssl/certs/*
 chmod o+r /etc/ssl/certs/ca-certificates.crt
 
+# https://askubuntu.com/a/908825
+printf '[*] allow _apt user to use /var/cache\n'
+sudo chown -Rv _apt:root /var/cache/apt/archives/partial/
+sudo chmod -Rv 700 /var/cache/apt/archives/partial/
+
