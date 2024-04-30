@@ -5,7 +5,7 @@ set -eu
 packages=(
   sudo
   adduser binutils-dev
-  cmake make build-essential gdb
+  cmake make build-essential gdb clang
   conntrack
   cron
   dnsutils
