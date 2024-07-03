@@ -2,6 +2,15 @@
 
 set -euo pipefail
 
+printf '[!] THIS WILL BREAK crontab -e AND POSSIBLY MORE FOR NON ROOT USER\n'
+printf '[!] do you want to continue? [y/N]\n'
+read -n1 -r yn
+
+if ! [[ "$yn" =~ ^[yY](es)?$ ]]
+then
+	printf 'aborting ...\n'
+fi
+
 for user in /home/*/
 do
 	[ -d "$user" ] && continue
@@ -39,6 +48,8 @@ printf '[*] open /etc/apt for _apt user\n'
 chmod o+x /etc/apt
 chmod o+r /etc/apt
 
+# this or some other harden breaks crontab -e
+# it tries to do something in /var/spool/cron/crontabs/$USER
 printf '[*] harden /var\n'
 chown root:admin /var
 # allow cd /var because a lot of tools need it like _apt or www-data
