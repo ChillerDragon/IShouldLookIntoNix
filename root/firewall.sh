@@ -97,6 +97,10 @@ iptables -I OUTPUT -d 185.17.0.31 -j ACCEPT
 iptables -I INPUT -s 88.198.96.203 -j ACCEPT
 iptables -I OUTPUT -d 88.198.96.203 -j ACCEPT
 
+# ger3.zillyhuhn.com
+iptables -I INPUT -s 45.142.178.158 -j ACCEPT
+iptables -I OUTPUT -d 45.142.178.158 -j ACCEPT
+
 iptables -A INPUT -s 127.0.0.1 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp -m conntrack -m multiport --ctstate NEW ! --dports "$SSH_PORT" -j DROP
 iptables -A INPUT -p udp -m udp --dport 8303 -j ACCEPT
