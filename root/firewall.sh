@@ -101,6 +101,10 @@ iptables -I OUTPUT -d 88.198.96.203 -j ACCEPT
 iptables -I INPUT -s 45.142.178.158 -j ACCEPT
 iptables -I OUTPUT -d 45.142.178.158 -j ACCEPT
 
+# master1.ddnet.org
+iptables -I INPUT -s 104.18.11.44 -j ACCEPT
+iptables -I OUTPUT -d 104.18.11.44 -j ACCEPT
+
 iptables -A INPUT -s 127.0.0.1 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp -m conntrack -m multiport --ctstate NEW ! --dports "$SSH_PORT" -j DROP
 iptables -A INPUT -p udp -m udp --dport 8303 -j ACCEPT
@@ -118,7 +122,7 @@ if [ -s /etc/iptables/rules.v4 ] || [ -s /etc/iptables/rules.v6 ]
 then
 	cat <<-EOF 1>&2
 	[-] Error: /etc/iptables/rules.v4 or /etc/iptables/rules.v6 already exists
-	[-]        not overwriting. iptables are not saved accross reboots
+	[-]        not overwriting. iptables are not saved across reboots
 	[-]        to force recreate run the following command:
 
 	  rm /etc/iptables/rules.v4 /etc/iptables/rules.v6
