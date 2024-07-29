@@ -31,6 +31,7 @@ if [ ! -f server.cnf ]
 then
 	cat <<-EOF > server.cnf
 	include cfg/server.cnf
+	gitpath_log=/home/chiller/git/TeeworldsLogsXXXXYY
 	server_name=ddnet-gctf1
 	EOF
 fi
