@@ -28,6 +28,7 @@ packages=(
   libcurl4-openssl-dev
   libfreetype6-dev
   libglew-dev
+  mariadb-client
   libmariadb-dev
   libmariadb-dev-compat
   libmaxminddb-dev
