@@ -110,6 +110,7 @@ iptables -A INPUT -p tcp -m tcp -m conntrack -m multiport --ctstate NEW ! --dpor
 iptables -A INPUT -p udp -m udp --dport 8303 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 8304 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 8305 -j ACCEPT
+iptables -A INPUT -p udp -m udp --dport 8306 -j ACCEPT
 iptables -A INPUT -p udp -m udp --dport 8307 -j ACCEPT # fng
 iptables -A INPUT -p udp -m udp --dport 8308 -j ACCEPT # zCatch
 iptables -A INPUT -p udp -m udp --dport 8704 -j ACCEPT
