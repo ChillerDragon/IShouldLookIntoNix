@@ -93,6 +93,10 @@ iptables -I OUTPUT -d 147.251.0.0/16 -j DROP
 iptables -I INPUT -s 185.17.0.31 -j ACCEPT
 iptables -I OUTPUT -d 185.17.0.31 -j ACCEPT
 
+# 0xf ranked block
+iptables -I INPUT -s 37.230.228.124 -j ACCEPT
+iptables -I OUTPUT -d 37.230.228.124 -j ACCEPT
+
 # zillyhuhn.com
 iptables -I INPUT -s 88.198.96.203 -j ACCEPT
 iptables -I OUTPUT -d 88.198.96.203 -j ACCEPT
