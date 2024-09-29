@@ -105,9 +105,18 @@ iptables -I OUTPUT -d 88.198.96.203 -j ACCEPT
 iptables -I INPUT -s 45.142.178.158 -j ACCEPT
 iptables -I OUTPUT -d 45.142.178.158 -j ACCEPT
 
-# master1.ddnet.org
-iptables -I INPUT -s 104.18.11.44 -j ACCEPT
-iptables -I OUTPUT -d 104.18.11.44 -j ACCEPT
+ips=(
+	172.104.61.198 # ddnet sinagpore
+	104.18.11.44 # master1.ddnet.org
+	114.29.237.242 # master2.ddnet.org
+)
+
+for ip in "${ips[@]}"
+do
+	iptables -I INPUT -s "$ip"  -j ACCEPT
+	iptables -I OUTPUT -d "$ip" -j ACCEPT
+done
+
 
 iptables -A INPUT -s 127.0.0.1 -j ACCEPT
 iptables -A INPUT -p tcp -m tcp -m conntrack -m multiport --ctstate NEW ! --dports "$SSH_PORT" -j DROP
