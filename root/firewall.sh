@@ -109,6 +109,7 @@ ips=(
 	172.104.61.198 # ddnet sinagpore
 	104.18.11.44 # master1.ddnet.org
 	114.29.237.242 # master2.ddnet.org
+	46.174.48.103 # copy love box s-ddr
 )
 
 for ip in "${ips[@]}"
